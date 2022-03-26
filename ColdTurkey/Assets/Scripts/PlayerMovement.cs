@@ -1,44 +1,50 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Debug = UnityEngine.Debug;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Animator animator;
-    public PauseMenu pauseMenu;
 
-    [SerializeField]
-    private LayerMask platformsLayerMask;
-    private Rigidbody2D rigidbody2d;
-    private BoxCollider2D boxCollider2d;
-    private string currentScene;
+
+    #region Components
+
+
+    [Header("Components")]
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private LayerMask platformsLayerMask;
+
+    [SerializeField] private Rigidbody2D rigidbody2d;
+
+    [SerializeField] private BoxCollider2D boxCollider2d;
+
+
     private bool canDoubleJump = false;
 
-    [SerializeField]
-    private  GameObject healthTransformsParent;
+    [SerializeField] private GameObject healthTransformsParent;
+
     private Transform[] healthTransforms;
+
     public static int currentHealth = 0;
+
     public bool isInvincible;
-    [SerializeField]
-    private float invincibleDelay = 2.0f;
+    [SerializeField] private float invincibleDelay = 2.0f;
     private bool shouldLerp = false;
     private float elapsedTime = 0;
 
-    [SerializeField]
-    private float jumpVelocity = 0.1f;
-    private float dragDistance;
+    [SerializeField] private float jumpVelocity = 0.1f;
+    [SerializeField] private float dragDistance;
 
 
-    // Start is called before the first frame update
-    void Awake()
+    #endregion Components
+
+
+    //---------------------------//
+    void Start()
+    //---------------------------//
     {
         animator = GetComponentInChildren<Animator>();
-
-        currentScene = SceneManager.GetActiveScene().name;
 
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
@@ -47,10 +53,12 @@ public class PlayerMovement : MonoBehaviour
         transform.position = healthTransforms[currentHealth].transform.position;
 
         dragDistance = Screen.height * 15 / 100;
-    }
 
-    // Update is called once per frame
+    }//END Start
+
+    //---------------------------//
     void Update()
+    //---------------------------//
     {
         if (IsGrounded())
         {
@@ -106,44 +114,55 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, healthTransforms[healthTransforms.Length - 1].transform.position, perc);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //QUIT FUNC
         {
             Application.Quit();
         }
-    }
 
+    }//END Update
+
+    //---------------------------//
     private bool IsGrounded()
+    //---------------------------//
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast( boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask );
         return raycastHit2d.collider != null;
-    }
+    }//END IsGrounded
 
+    //---------------------------//
     private bool BeganTouch()
+    //---------------------------//
     {
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
             return true;
         }
         return false;
-    }
+    }//END BeganTouch
 
-    public void MovePlayerBack()
+    //---------------------------//
+    public void MovePlayerBack() //A damage function
+    //---------------------------//
     {
         isInvincible = true;
         shouldLerp = true;
         Debug.Log("Move player back fired.");
         currentHealth++;
-        StartCoroutine(Invincible());
-    }
+        StartCoroutine(IInvincible());
+    }//MovePlayerBack
 
-    private IEnumerator Invincible()
+    //---------------------------//
+    private IEnumerator IInvincible()
+    //---------------------------//
     {
         yield return new WaitForSeconds(invincibleDelay);
         isInvincible = false;
-        //shouldLerp = false;                                       //added this in because shouldLerp is never made false, which makes it so the player is always lerping
-    }
 
+    }//END IInvincible
+
+    //---------------------------//
     public void MovePlayerForward()
+    //---------------------------//
     {
         UnityEngine.Debug.Log("Move player forward fired.");
         if (currentHealth == 0)
@@ -156,11 +175,15 @@ public class PlayerMovement : MonoBehaviour
         //transform.position = healthTransforms[currentHealth].transform.position;
         transform.position = Vector2.MoveTowards(transform.position, healthTransforms[currentHealth - 1].transform.position, invincibleDelay * Time.deltaTime);
         currentHealth--;
-    }
 
+    }//END MovePlayerForward
+
+    //---------------------------//
     private void Jump()
+    //---------------------------//
     {
         animator.SetInteger("isJumping", 1);
         rigidbody2d.velocity = Vector2.up * jumpVelocity;
-    }
-}
+    }//END Jump
+
+}//END PlayerMovement

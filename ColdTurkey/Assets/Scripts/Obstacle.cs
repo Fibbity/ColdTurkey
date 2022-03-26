@@ -7,14 +7,19 @@ public class Obstacle : MonoBehaviour
 {
     private PlayerMovement player { get; set; }
 
+    //---------------------------//
     void Awake()
+    //---------------------------//
     {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-    }
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>(); //this is absolutely unnecessary
 
+    }//END Start
+
+    //---------------------------//
     void OnTriggerEnter2D(Collider2D collider)
+    //---------------------------//
     {
-        if(collider.tag == "Player")
+        if (collider.tag == "Player")
         {
             if (!player.isInvincible)
             {
@@ -22,5 +27,6 @@ public class Obstacle : MonoBehaviour
                 player.MovePlayerBack();
             }
         }
-    }
-}
+    }//END OnTriggerEnter2D
+
+}//END Class Obstacle

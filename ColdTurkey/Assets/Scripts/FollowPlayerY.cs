@@ -11,3 +11,4 @@ public class FollowPlayerY : MonoBehaviour
         transform.position = new Vector2(transform.position.x, Player.transform.position.y);
     }
 }
+//This script is pointless

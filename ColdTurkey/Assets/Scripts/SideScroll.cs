@@ -1,40 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SideScroll : MonoBehaviour
 {
-    public float speed = 3;
-    public float incrementDelay = 10;
+    [Header("Components")]
+    [SerializeField] float speed = 3;
+    [SerializeField] float incrementDelay = 10;
 
-    // Start is called before the first frame update
-    void Awake()
+    //---------------------------//
+    void Start()
+    //---------------------------//
     {
-        StartCoroutine(IncrementSpeed());
-        //_center = transform.position;
-    }
-    // Update is called once per frame
+        StartCoroutine(IIncrementSpeed());
+
+    }//END Start
+
+    //---------------------------//
     void Update()
+    //---------------------------//
     {
-        var rightMove = (Vector3)transform.position + Vector3.right * speed * Time.deltaTime;
+        Vector3 rightMove = (Vector3)transform.position + Vector3.right * speed * Time.deltaTime;
         transform.position = rightMove;
 
-        //if (circleMove)
-        //{
-        //    angle += rotateSpeed * Time.deltaTime;
+    }//END Update
 
-        //    var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
-        //    transform.position = _center + offset + leftMove;
-
-        //}
-    }
-
-    IEnumerator IncrementSpeed()
+    //---------------------------//
+    IEnumerator IIncrementSpeed()
+    //---------------------------//
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(incrementDelay);
             speed++;
         }
-    }
-}
+
+    }//END IIncrement Speed
+
+}//END CLASS SideScroll
