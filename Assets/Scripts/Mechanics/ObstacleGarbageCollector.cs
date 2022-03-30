@@ -10,11 +10,13 @@ public class ObstacleGarbageCollector : MonoBehaviour
     //---------------------------//
     {
 
-        if (collider.tag == "Obstacle" || collider.tag == "Forward Pill")//Make Layers?
-            {
-                Destroy(collider.gameObject);
-            }
-        
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Platform") || 
+            collider.gameObject.layer == LayerMask.NameToLayer("Obstacle") || 
+            collider.gameObject.layer == LayerMask.NameToLayer("Pickup"))
+        {
+            Destroy(collider.gameObject);
+        }
+
     }//END OnTriggerEnter2D
 
 }//END OGC
