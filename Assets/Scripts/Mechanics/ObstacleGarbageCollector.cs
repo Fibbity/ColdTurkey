@@ -10,7 +10,7 @@ public class ObstacleGarbageCollector : MonoBehaviour
     //---------------------------//
     {
 
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Platform") || 
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Platform") && collider.tag != "Floor" || 
             collider.gameObject.layer == LayerMask.NameToLayer("Obstacle") || 
             collider.gameObject.layer == LayerMask.NameToLayer("Pickup"))
         {

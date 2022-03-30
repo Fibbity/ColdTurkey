@@ -70,16 +70,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded() && BeganTouch())
             {
-                
-
                 Jump();
             }
             if (!IsGrounded() && BeganTouch())
             {
                 if (canDoubleJump)
                 {
-                    
-
                     Jump();
                     canDoubleJump = false;
                 }
@@ -133,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
     private bool BeganTouch()
     //---------------------------//
     {
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             return true;
         }
