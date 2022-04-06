@@ -10,7 +10,7 @@ public class Pickup : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     //---------------------------//
     {
-        if (gameObject.tag == "Forward Pill") //Make Tags Layers
+        if (gameObject.tag == "Pill1") //Make Tags Layers
         {
             if (collider.tag == "Player")
             {

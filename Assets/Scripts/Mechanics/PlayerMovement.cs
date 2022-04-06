@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayerForward()
     //---------------------------//
     {
-        UnityEngine.Debug.Log("Move player forward fired.");
+        Debug.Log("Move player forward fired.");
         if (currentHealth == 0)
         {
             return;
