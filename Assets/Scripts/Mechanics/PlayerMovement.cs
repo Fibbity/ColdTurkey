@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Components")]
+    [SerializeField] private float deadWaitTime;
+
     [SerializeField] private Animator animator;
 
     [SerializeField] private LayerMask platformsLayerMask;
@@ -163,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Move player forward fired.");
         if (currentHealth == 0)
         {
+            StartCoroutine(IDied());
             return;
         }
 
@@ -181,5 +185,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("isJumping", 1);
         rigidbody2d.velocity = Vector2.up * jumpVelocity;
     }//END Jump
+
+
+    IEnumerator IDied()
+    {
+        yield return new WaitForSeconds(deadWaitTime);
+        SceneManager.LoadScene(2);
+
+    }
+
 
 }//END PlayerMovement

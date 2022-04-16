@@ -13,7 +13,7 @@ public class WinTrigger : MonoBehaviour
         if (collider.tag == "Player")
         {
             Debug.Log("Ya did it");
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
 
     }//END OnTriggerEnter2D
