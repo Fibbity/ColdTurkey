@@ -63,12 +63,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     //---------------------------//
     {
-        if (IsGrounded())
-        {
-            animator.SetInteger("isJumping", 0);
+        //if (IsGrounded())
+        //{
+        //    animator.SetInteger("isJumping", 0);
 
-            canDoubleJump = true;
-        }
+        //    canDoubleJump = true;
+        //}
         if (Input.touchCount > 0)
         {
             if (IsGrounded() && BeganTouch())
@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     //---------------------------//
     {
-        animator.SetInteger("isJumping", 1);
+        //animator.SetInteger("isJumping", 1);
         rigidbody2d.velocity = Vector2.up * jumpVelocity;
     }//END Jump
 
