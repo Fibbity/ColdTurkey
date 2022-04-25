@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8403524725240193062}
   - component: {fileID: 8403524725240193063}
   m_Layer: 6
-  m_Name: Platform 1
+  m_Name: Brick Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1be0a399f4281494c87dc793917873c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d4d833617756a74994f12e6b1a7ce56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00051140785, y: 0.19147563}
+  m_Offset: {x: 0.02159357, y: 0.72130674}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,5 +107,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.070667, y: 2.3824978}
+  m_Size: {x: 4.9825306, y: 0.2758578}
   m_EdgeRadius: 0
