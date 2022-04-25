@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] private LoseScript loseScript;
     [SerializeField] private SideScroll playerScroll;
-
     
     [SerializeField] private float deadWaitTime;
 
