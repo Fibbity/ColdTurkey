@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
 
+    [SerializeField] private Animator fadeAnimator;
+    [SerializeField] private GameObject menu;
+
     //---------------------------//
     public void Menu(int value)
     //---------------------------//
     {
         if (value == 0)
         {
-            SceneManager.LoadScene(1);
+            fadeAnimator.SetBool("isStarting", true);
         }
         else
         {
@@ -23,4 +26,15 @@ public class MainMenuManager : MonoBehaviour
             #endif     
         }
     }
+
+    //---------------------------//
+    public void LoadScene()
+    //---------------------------//
+    {
+        menu.SetActive(false);
+        SceneManager.LoadScene(1);
+
+    }//END LoadScene
+
+
 }
