@@ -62,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
 
         dragDistance = Screen.height * 15 / 100;
 
+        animator.SetBool("isHealthy", true);
+
+
     }//END Start
 
     //---------------------------//
@@ -114,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
             }
             catch(Exception ex)
             {
+                loseScript.Lose();
                 Debug.Log(ex);
                 transform.position = Vector3.Lerp(transform.position, healthTransforms[healthTransforms.Length - 1].transform.position, perc);
             }
@@ -148,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayerBack() //A damage function
     //---------------------------//
     {
+        animator.SetBool("isHealthy", false);
         isInvincible = true;
         shouldLerp = true;
         Debug.Log("Move player back fired.");
@@ -161,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(invincibleDelay);
         isInvincible = false;
+        animator.SetBool("isHealthy", true);
 
     }//END IInvincible
 
@@ -177,10 +183,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //col.transform.gameObject.SetActive(false);
-        
+
         //transform.position = healthTransforms[currentHealth].transform.position;
-        transform.position = Vector2.MoveTowards(transform.position, healthTransforms[currentHealth - 1].transform.position, invincibleDelay * Time.deltaTime);
-        currentHealth--;
+        try
+        {
+            transform.position = Vector2.MoveTowards(transform.position, healthTransforms[currentHealth - 1].transform.position, invincibleDelay * Time.deltaTime);
+            currentHealth--;
+
+        }
+        catch
+        {
+            if (healthTransforms[currentHealth] == null)
+            {
+                loseScript.Lose();
+            }
+            if (healthTransforms[currentHealth - 1] == null)
+            {
+                loseScript.Lose();
+            }
+        }
 
     }//END MovePlayerForward
 

@@ -22,7 +22,7 @@ public class LoseScript : MonoBehaviour
     }
 
 
-    public void LoadScene()
+    public void LoadLoseScene()
     {
         SceneManager.LoadScene(2);
     }

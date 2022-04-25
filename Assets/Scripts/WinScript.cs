@@ -13,7 +13,7 @@ public class WinScript : MonoBehaviour
     {
         animator.SetBool("hasWon", true);
     }
-    public void LoadScene()
+    public void LoadWinScene()
     {
         SceneManager.LoadScene(3);
     }

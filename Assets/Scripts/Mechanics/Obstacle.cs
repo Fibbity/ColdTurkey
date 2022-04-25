@@ -7,6 +7,11 @@ public class Obstacle : MonoBehaviour
 {
     private PlayerMovement player { get; set; }
 
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+    }
+
     //---------------------------//
     void OnTriggerEnter2D(Collider2D collider)
     //---------------------------//
