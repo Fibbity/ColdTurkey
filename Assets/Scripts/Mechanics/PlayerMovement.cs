@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Components")]
+    [SerializeField] private LoseScript loseScript;
+    [SerializeField] private SideScroll playerScroll;
+
+    
     [SerializeField] private float deadWaitTime;
 
     [SerializeField] private Animator animator;
@@ -21,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody2d;
 
     [SerializeField] private BoxCollider2D boxCollider2d;
+
 
 
     private bool canDoubleJump = false;
@@ -166,7 +171,8 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Move player forward fired.");
         if (currentHealth == 0)
         {
-            StartCoroutine(IDied());
+            loseScript.Lose();
+            playerScroll.speed = 0.25f;
             return;
         }
 
@@ -185,14 +191,6 @@ public class PlayerMovement : MonoBehaviour
         //animator.SetInteger("isJumping", 1);
         rigidbody2d.velocity = Vector2.up * jumpVelocity;
     }//END Jump
-
-
-    IEnumerator IDied()
-    {
-        yield return new WaitForSeconds(deadWaitTime);
-        SceneManager.LoadScene(2);
-
-    }
 
 
 }//END PlayerMovement
