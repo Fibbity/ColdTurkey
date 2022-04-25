@@ -4,7 +4,7 @@ using UnityEngine;
 public class SideScroll : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] float speed = 3;
+    public float speed = 3;
     [SerializeField] float incrementDelay = 10;
 
     //---------------------------//

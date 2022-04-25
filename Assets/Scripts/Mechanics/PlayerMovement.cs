@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Components")]
+    [SerializeField] private LoseScript loseScript;
+    [SerializeField] private SideScroll playerScroll;
+
+    
     [SerializeField] private float deadWaitTime;
 
     [SerializeField] private Animator animator;
@@ -21,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody2d;
 
     [SerializeField] private BoxCollider2D boxCollider2d;
+
 
 
     private bool canDoubleJump = false;
@@ -56,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
         transform.position = healthTransforms[currentHealth].transform.position;
 
         dragDistance = Screen.height * 15 / 100;
+
+        animator.SetBool("isHealthy", true);
+
 
     }//END Start
 
@@ -109,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
             }
             catch(Exception ex)
             {
+                loseScript.Lose();
                 Debug.Log(ex);
                 transform.position = Vector3.Lerp(transform.position, healthTransforms[healthTransforms.Length - 1].transform.position, perc);
             }
@@ -143,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayerBack() //A damage function
     //---------------------------//
     {
+        animator.SetBool("isHealthy", false);
         isInvincible = true;
         shouldLerp = true;
         Debug.Log("Move player back fired.");
@@ -156,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(invincibleDelay);
         isInvincible = false;
+        animator.SetBool("isHealthy", true);
 
     }//END IInvincible
 
@@ -166,15 +177,31 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Move player forward fired.");
         if (currentHealth == 0)
         {
-            StartCoroutine(IDied());
+            loseScript.Lose();
+            playerScroll.speed = 0.25f;
             return;
         }
 
         //col.transform.gameObject.SetActive(false);
-        
+
         //transform.position = healthTransforms[currentHealth].transform.position;
-        transform.position = Vector2.MoveTowards(transform.position, healthTransforms[currentHealth - 1].transform.position, invincibleDelay * Time.deltaTime);
-        currentHealth--;
+        try
+        {
+            transform.position = Vector2.MoveTowards(transform.position, healthTransforms[currentHealth - 1].transform.position, invincibleDelay * Time.deltaTime);
+            currentHealth--;
+
+        }
+        catch
+        {
+            if (healthTransforms[currentHealth] == null)
+            {
+                loseScript.Lose();
+            }
+            if (healthTransforms[currentHealth - 1] == null)
+            {
+                loseScript.Lose();
+            }
+        }
 
     }//END MovePlayerForward
 
@@ -185,14 +212,6 @@ public class PlayerMovement : MonoBehaviour
         //animator.SetInteger("isJumping", 1);
         rigidbody2d.velocity = Vector2.up * jumpVelocity;
     }//END Jump
-
-
-    IEnumerator IDied()
-    {
-        yield return new WaitForSeconds(deadWaitTime);
-        SceneManager.LoadScene(2);
-
-    }
 
 
 }//END PlayerMovement

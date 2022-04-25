@@ -1693,7 +1693,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your addiction is catching up with you
+  m_text: 'Your addiction is catching up with you.
+
+
+    Run.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987e24a55fd0641419880e73b15d2a6b, type: 2}
   m_sharedMaterial: {fileID: 395805104988693858, guid: 987e24a55fd0641419880e73b15d2a6b, type: 2}

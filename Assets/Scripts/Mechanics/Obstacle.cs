@@ -7,13 +7,10 @@ public class Obstacle : MonoBehaviour
 {
     private PlayerMovement player { get; set; }
 
-    //---------------------------//
-    void Awake()
-    //---------------------------//
+    private void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>(); //this is absolutely unnecessary
-
-    }//END Start
+        player = FindObjectOfType<PlayerMovement>();
+    }
 
     //---------------------------//
     void OnTriggerEnter2D(Collider2D collider)

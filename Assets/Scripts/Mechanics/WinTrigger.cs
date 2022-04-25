@@ -5,16 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class WinTrigger : MonoBehaviour
 {
+
+    [SerializeField] WinScript winScript;
     //---------------------------//
     void OnTriggerEnter2D(Collider2D collider)
     //---------------------------//
     {
 
-        if (collider.tag == "Player")
-        {
-            Debug.Log("Ya did it");
-            SceneManager.LoadScene(3);
-        }
+        winScript.Win();
 
     }//END OnTriggerEnter2D
 
