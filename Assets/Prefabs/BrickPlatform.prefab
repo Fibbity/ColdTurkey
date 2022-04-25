@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2289646981305913947}
   - component: {fileID: 2289646981305913946}
   - component: {fileID: 2289646981305913949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BrickPlatform
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.032235146, y: 0.10959941}
+  m_Offset: {x: 0.032235146, y: 0.48232818}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,5 +107,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.932684, y: 1.5286559}
+  m_Size: {x: 4.932684, y: 0.78319836}
   m_EdgeRadius: 0
