@@ -348,7 +348,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &33877477
 PrefabInstance:
@@ -11780,7 +11780,7 @@ Transform:
   - {fileID: 425948268}
   - {fileID: 2089669826}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &888149865
 PrefabInstance:
@@ -12417,7 +12417,7 @@ Transform:
   - {fileID: 474064375}
   - {fileID: 921487339}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &936436899
 PrefabInstance:
@@ -15729,7 +15729,7 @@ Transform:
   - {fileID: 1108994041}
   - {fileID: 239773649}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1202201021
 GameObject:
@@ -18072,7 +18072,6 @@ RectTransform:
   - {fileID: 1608288884}
   - {fileID: 1539138369}
   - {fileID: 2146262438}
-  - {fileID: 1469122939}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19097,16 +19096,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469122938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2991396, y: 1.2991396, z: 1.2991396}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7697402}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1818371965}
-  m_Father: {fileID: 1387059134}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.4680176, y: 5.2355347}
+  m_AnchoredPosition: {x: 1.1300049, y: 4.030014}
   m_SizeDelta: {x: 10.95, y: 3.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469122940
@@ -25698,7 +25697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1995210962
 PrefabInstance:
@@ -25795,7 +25794,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2029640711
 PrefabInstance:
@@ -27588,7 +27587,7 @@ GameObject:
   - component: {fileID: 2146262439}
   - component: {fileID: 2146262440}
   m_Layer: 5
-  m_Name: HealthContainer
+  m_Name: '[HealthContainer]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27672,6 +27671,10 @@ MonoBehaviour:
   - It's catching up
   - I can't take this much longer
   - Last time, I swear
+  - Numb it all
+  - There's only one way to end it
+  - I need more
+  - This isn't enough
   text: {fileID: 1818371966}
   hp1: {fileID: 52860485}
   hp2: {fileID: 1233603926}
@@ -27688,7 +27691,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8906911755051924770, guid: b22ee36d02af622479d1247569f46eaf, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8906911755051924770, guid: b22ee36d02af622479d1247569f46eaf, type: 3}
       propertyPath: m_LocalPosition.x
