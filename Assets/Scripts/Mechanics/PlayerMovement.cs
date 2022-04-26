@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isHealthy", true);
 
-
+        this.gameObject.transform.position = new Vector2(-1.25f, -2);
     }//END Start
 
     //---------------------------//
