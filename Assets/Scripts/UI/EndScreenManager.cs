@@ -11,7 +11,7 @@ public class EndScreenManager : MonoBehaviour
     {
         if (value == 0)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
         else
         {

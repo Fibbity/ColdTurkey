@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] private LoseScript loseScript;
     [SerializeField] private SideScroll playerScroll;
-    
+    [SerializeField] private HealthTracker healthTracker;
+
     [SerializeField] private float deadWaitTime;
 
     [SerializeField] private Animator animator;
@@ -152,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
     //---------------------------//
     {
         animator.SetBool("isHealthy", false);
+        healthTracker.LoseHealth();
         isInvincible = true;
         shouldLerp = true;
         Debug.Log("Move player back fired.");
@@ -166,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(invincibleDelay);
         isInvincible = false;
         animator.SetBool("isHealthy", true);
+        healthTracker.CloseText();
 
     }//END IInvincible
 

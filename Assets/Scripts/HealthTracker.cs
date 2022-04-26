@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthTracker : MonoBehaviour
 {
+    [SerializeField] private AudioSource playerSource;
+    [SerializeField] private AudioClip[] damageClips;
+    [SerializeField] private Animator animator;
+
+    [Header("Text")]
+    [SerializeField] private string[] lines;
+    [SerializeField] private TMP_Text text;
+
+    [Header("Health")]
     [SerializeField] private GameObject hp1;
     [SerializeField] private GameObject hp2;
     [SerializeField] private GameObject hp3;
@@ -40,6 +50,23 @@ public class HealthTracker : MonoBehaviour
             currentHP--;
             hp1.SetActive(false);
         }
+        TakeDamage();
     }
 
+    void TakeDamage()
+    {
+        int i = Random.Range(0, lines.Length);
+        int g = Random.Range(0, damageClips.Length);
+        text.text = lines[i];
+
+        playerSource.PlayOneShot(damageClips[g]);
+        animator.SetBool("isOn", true);
+
+
+    }//END TakeDamage;
+
+    public void CloseText()
+    {
+        animator.SetBool("isOn", false);
+    }
 }
