@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoseScript : MonoBehaviour
 {
     [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioSource playerAudio;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource bgSource;
 
@@ -14,6 +15,7 @@ public class LoseScript : MonoBehaviour
     {
         animator.SetBool("hasLost", true);
         bgSource.Stop();
+        playerAudio.gameObject.SetActive(false);
     }
 
     public void Fire()
